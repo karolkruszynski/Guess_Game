@@ -8,7 +8,7 @@ import random
 print("Welcome to the Number Guessing Game!")
 print("I'm thinking of a number between 1 and 100.")
 PLAYER_WON = False
-PLAYER_LIFE = 0
+# PLAYER_LIFE = 0
 def randomizer():
     # number = random.randint(1,100)
     number = 10
@@ -17,18 +17,22 @@ def checker(number,player_number):
     global PLAYER_LIFE
     if player_number > number:
         print("Too high!")
+        print("Guess again.")
         PLAYER_LIFE -= 1
         if PLAYER_LIFE == 0:
             print("You ran out of attempts! You LOST!")
             return True
+        print(f"You have {PLAYER_LIFE} attempts remaining to guess the number")
     elif player_number < number:
         print("Too low!")
+        print("Guess again.")
         PLAYER_LIFE -= 1
         if PLAYER_LIFE == 0:
             print("You ran out of attempts! You LOST!")
             return True
+        print(f"You have {PLAYER_LIFE} attempts remaining to guess the number")
     elif player_number == number:
-        print(f"You won ! The hidden number is {number}")
+        print(f"You won ! The hidden number was {number}")
         return True
 def check_player_won(number,player_number):
     global PLAYER_WON
@@ -49,4 +53,3 @@ while not PLAYER_WON:
     number = randomizer()
     player_number = player_guess()
     check_player_won(number,player_number)
-    print(PLAYER_LIFE)
