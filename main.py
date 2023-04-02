@@ -9,9 +9,12 @@ import random
 def randomizer():
     number = random.randint(1,100)
     return number
-def checker(number):
-    if number % 2 == 0:
+def checker(number,player_number):
+    if number == player_number:
         print("yes!")
+def player_guess():
+    player_number = int(input(" Make a guess: "))
+    return player_number
 number = randomizer()
-print(number)
-checker(number)
+player_number = player_guess()
+checker(number,player_number)
