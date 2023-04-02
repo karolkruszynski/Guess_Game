@@ -5,16 +5,28 @@
 # todo: If player guess the number then win
 
 import random
+print("Welcome to the Number Guessing Game!")
+print("I'm thinking of a number between 1 and 100.")
 PLAYER_WON = False
+PLAYER_LIFE = 0
 def randomizer():
     # number = random.randint(1,100)
     number = 10
     return number
 def checker(number,player_number):
+    global PLAYER_LIFE
     if player_number > number:
         print("Too high!")
+        PLAYER_LIFE -= 1
+        if PLAYER_LIFE == 0:
+            print("You ran out of attempts! You LOST!")
+            return True
     elif player_number < number:
         print("Too low!")
+        PLAYER_LIFE -= 1
+        if PLAYER_LIFE == 0:
+            print("You ran out of attempts! You LOST!")
+            return True
     elif player_number == number:
         print(f"You won ! The hidden number is {number}")
         return True
@@ -24,7 +36,17 @@ def check_player_won(number,player_number):
 def player_guess():
     player_number = int(input(" Make a guess: "))
     return player_number
+
+difficulty_level = input("Choose a difficulty level! Type 'easy' or 'hard': ").lower()
+if difficulty_level == "easy":
+    PLAYER_LIFE = 10
+elif difficulty_level == "hard":
+    PLAYER_LIFE = 5
+else:
+    print("You write invalid syntax!")
+
 while not PLAYER_WON:
     number = randomizer()
     player_number = player_guess()
     check_player_won(number,player_number)
+    print(PLAYER_LIFE)
