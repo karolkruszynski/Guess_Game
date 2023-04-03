@@ -10,8 +10,8 @@ print("I'm thinking of a number between 1 and 100.")
 PLAYER_WON = False
 # PLAYER_LIFE = 0
 def randomizer():
-    # number = random.randint(1,100)
-    number = 10
+    number = random.randint(1,100)
+    # number = 10
     return number
 def checker(number,player_number):
     global PLAYER_LIFE
